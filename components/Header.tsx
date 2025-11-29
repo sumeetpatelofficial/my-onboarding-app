@@ -22,7 +22,7 @@ const navigation = [
 ];
 
 const Header = () => {
-  const [useImage, setUserImage] = useState();
+  const [useImage, setUserImage] = useState<string | undefined>(undefined);
   const currentPath = usePathname();
   const isActive = (path: string) => currentPath === path;
 
@@ -60,9 +60,7 @@ const Header = () => {
             ))}
           </div>
           <Avatar className="size-10">
-            <AvatarImage
-              src={useImage ? useImage : "https://github.com/shadcn.png"}
-            />
+            <AvatarImage src={useImage || "https://github.com/shadcn.png"} />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </div>
