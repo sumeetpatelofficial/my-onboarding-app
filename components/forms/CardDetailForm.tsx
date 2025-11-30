@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -108,12 +108,12 @@ const CardDetailsForm = () => {
       cvv: "",
     });
 
-    router.push("/profile-review");
+    router.push("/profile-image");
   };
 
   return (
     <div className="max-w-3xl space-y-6">
-      <div className="overflow-hidden w-[400px]" ref={mainEmblaRef}>
+      <div className="overflow-hidden md:w-[400px] w-full" ref={mainEmblaRef}>
         <div className="flex gap-6 items-start">
           <AnimatePresence>
             {cards &&
@@ -123,7 +123,7 @@ const CardDetailsForm = () => {
                   layout
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="relative w-80 h-52 rounded-md overflow-hidden flex-[0_0_100%]"
+                  className="relative md:w-80 w-72 h-52 rounded-md overflow-hidden flex-[0_0_100%]"
                 >
                   <div className="absolute inset-0 bg-linear-to-br from-purple-400 to-purple-800 backdrop-blur-md border border-purple/10 p-4 flex flex-col justify-between text-white">
                     <div className="flex items-center justify-between">
@@ -202,7 +202,7 @@ const CardDetailsForm = () => {
               )}
             />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="newCard.expiryDate"

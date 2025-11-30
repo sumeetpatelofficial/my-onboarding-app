@@ -12,6 +12,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import ProgressBar from "./ProgressBar";
 
 const steps = [
   { name: "Personal Information", href: "/", key: "personal", icon: User },
@@ -61,10 +62,14 @@ export function OnboardingProgress() {
     // Step 4 – Image
     if (data.image && data.image !== "") count++;
 
-    // Step 5 – Completed only when user has been on profile-review
+    // Step 5 – Completed (permanent once reached)
+    const reachedReview = localStorage.getItem("reached-review") === "yes";
+
     if (pathname === "/profile-review") {
-      count = 5;
       localStorage.setItem("reached-review", "yes");
+      count = 5;
+    } else if (reachedReview) {
+      count = 5; // 👈 prevents progress drop
     }
 
     setCompletedSteps(count);
@@ -79,22 +84,11 @@ export function OnboardingProgress() {
   };
 
   return (
-    <div className="py-6 hidden lg:block sticky top-0">
-      {/* <h2 className="text-lg font-semibold mb-6">Progress</h2>
-      <div className="mb-6">
-        <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-          <div
-            className="h-2 bg-green-500 transition-all duration-500"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-        <p className="mt-2 text-sm text-gray-600">
-          {Math.round(progress)}% complete
-        </p>
-      </div> */}
+    <div className="md:py-6">
+      {/* <ProgressBar progress={progress} /> */}
 
       {/* Steps */}
-      <ol className="flex space-x-3 border-b">
+      <ol className="flex justify-between md:justify-normal md:space-x-3 border-b">
         {steps.map((step, idx) => {
           const isActive = pathname === step.href;
           const isCompleted = idx < completedSteps;
@@ -102,7 +96,7 @@ export function OnboardingProgress() {
           const Icon = step.icon;
 
           return (
-            <li key={idx} className="relative stepper pr-10">
+            <li key={idx} className="relative stepper md:pr-10 pr-5 last:pr-0">
               <Button
                 variant="link"
                 type="button"
@@ -132,7 +126,7 @@ export function OnboardingProgress() {
                       : "text-gray-500"
                   )}
                 />
-                {step.name}
+                <span className="hidden md:block">{step.name}</span>
               </Button>
             </li>
           );

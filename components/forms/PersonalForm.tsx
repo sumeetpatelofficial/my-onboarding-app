@@ -74,7 +74,7 @@ export const PersonalForm = () => {
         className="space-y-10 max-w-3xl"
       >
         {/* FIRST + LAST */}
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
             name="firstName"
@@ -105,7 +105,7 @@ export const PersonalForm = () => {
         </div>
 
         {/* EMAIL + PHONE */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="email"
@@ -124,24 +124,6 @@ export const PersonalForm = () => {
             )}
           />
 
-          {/* PHONE AUTO FORMAT */}
-          {/* <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <FormControl>
-                  <Input
-                    value={field.value}
-                    placeholder="+91-12345 12345"
-                    onChange={handlePhoneInput}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> */}
           <FormField
             control={form.control}
             name="phone"

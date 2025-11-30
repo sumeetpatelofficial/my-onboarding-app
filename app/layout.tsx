@@ -23,10 +23,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} antialiased`}>
         <Header />
-        <div className="container mx-auto mt-5">
+        <div className="container mx-auto mt-5 md:px-0 px-3">
           <div className="flex flex-col">
             <OnboardingProgress />
-            <main className="grow">{children}</main>
+            <main className="grow mb-5">{children}</main>
           </div>
         </div>
       </body>

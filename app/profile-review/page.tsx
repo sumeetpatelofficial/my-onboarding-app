@@ -49,7 +49,7 @@ export default function ProfileReviewPage() {
   if (!personal || !address) return null;
 
   return (
-    <div className="max-w-2xl p-8 space-y-10">
+    <div className="md:max-w-2xl md:p-8 py-4 space-y-10">
       <div className="flex items-center gap-3">
         <CheckCircle2 className="h-8 w-8 text-green-600" />
         <h1 className="text-2xl font-semibold">Review Your Profile</h1>
@@ -71,7 +71,7 @@ export default function ProfileReviewPage() {
 
         <h2 className="font-semibold text-lg mb-4">Personal Information</h2>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <p>
             <strong>First Name:</strong> {personal.firstName}
           </p>
@@ -106,7 +106,7 @@ export default function ProfileReviewPage() {
 
         <h2 className="font-semibold text-lg mb-4">Address Information</h2>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <p>
             <strong>Address Line 1:</strong> {address.line1}
           </p>

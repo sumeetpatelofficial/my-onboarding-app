@@ -40,11 +40,11 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-white shadow-md flex items-center sticky top-0 z-10">
-      <div className="container mx-auto">
+    <header className="bg-white min-h-16 shadow-md flex items-center sticky top-0 z-10">
+      <div className="container mx-auto px-3 md:px-0">
         <div className="flex items-center justify-between">
           <Image src="/logo.svg" width={48} height={48} alt="logo" />
-          <div className="flex items-center mx-auto">
+          <div className="md:flex items-center mx-auto hidden">
             {navigation.map((navLink, i) => (
               <Link
                 key={i}
